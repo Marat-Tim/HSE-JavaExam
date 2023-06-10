@@ -1,6 +1,6 @@
 package com.example.hsejavaexam.dto;
 
-import com.example.hsejavaexam.entity.BookStatus;
+import com.example.hsejavaexam.domain.BookStatus;
 import lombok.Data;
 
 @Data

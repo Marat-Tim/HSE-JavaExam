@@ -4,7 +4,7 @@ import com.example.hsejavaexam.dto.BookInfoDto;
 import com.example.hsejavaexam.dto.NewBookDto;
 import com.example.hsejavaexam.dto.UpdateBookDto;
 import com.example.hsejavaexam.entity.BookEntity;
-import com.example.hsejavaexam.entity.BookStatus;
+import com.example.hsejavaexam.domain.BookStatus;
 import com.example.hsejavaexam.repository.BookRepository;
 import com.example.hsejavaexam.service.abstraction.BookMapper;
 import com.example.hsejavaexam.service.abstraction.Library;
@@ -33,6 +33,9 @@ public class LibraryImpl implements Library {
 
     @Override
     public void updateBook(long id, UpdateBookDto updateBookDto) {
+        if (bookRepository.findById(id).isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Книги с таким id не существует");
+        }
         BookEntity book = bookMapper.mapUpdateBookToEntity(updateBookDto);
         book.setId(id);
         bookRepository.save(book);
@@ -40,6 +43,9 @@ public class LibraryImpl implements Library {
 
     @Override
     public void deleteBook(long id) {
+        if (bookRepository.findById(id).isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Книги с таким id не существует");
+        }
         bookRepository.deleteById(id);
     }
 

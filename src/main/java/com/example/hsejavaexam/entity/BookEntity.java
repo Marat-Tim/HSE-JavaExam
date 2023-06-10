@@ -1,5 +1,6 @@
 package com.example.hsejavaexam.entity;
 
+import com.example.hsejavaexam.domain.BookStatus;
 import jakarta.persistence.*;
 import lombok.Data;
 

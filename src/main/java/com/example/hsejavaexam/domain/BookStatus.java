@@ -1,4 +1,4 @@
-package com.example.hsejavaexam.entity;
+package com.example.hsejavaexam.domain;
 
 public enum BookStatus {
     IN_STOCK,

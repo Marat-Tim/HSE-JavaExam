@@ -1,9 +1,6 @@
 package com.example.hsejavaexam.dto;
 
-import com.example.hsejavaexam.entity.BookStatus;
-import jakarta.persistence.Column;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
+import com.example.hsejavaexam.domain.BookStatus;
 import lombok.Data;
 
 @Data
