@@ -16,7 +16,7 @@ public interface Library {
 
     List<BookInfoDto> getAllBooks();
 
-    void lendBook(long id);
+    void lendBookToUser(long id, String userId);
 
     void returnBook(long id);
 }

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 public interface ClientApi {
     @PostMapping("/lend")
     @ResponseStatus(HttpStatus.OK)
-    void lend(@RequestParam long userId, @RequestParam long bookId);
+    void lend(@RequestParam String userId, @RequestParam long bookId);
 
     @PostMapping("/return")
     @ResponseStatus(HttpStatus.OK)

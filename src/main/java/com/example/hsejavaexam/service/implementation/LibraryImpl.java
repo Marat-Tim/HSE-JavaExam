@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.StreamSupport;
 
 @Service
@@ -33,10 +34,12 @@ public class LibraryImpl implements Library {
 
     @Override
     public void updateBook(long id, UpdateBookDto updateBookDto) {
-        if (bookRepository.findById(id).isEmpty()) {
+        Optional<BookEntity> oldBook = bookRepository.findById(id);
+        if (oldBook.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Книги с таким id не существует");
         }
         BookEntity book = bookMapper.mapUpdateBookToEntity(updateBookDto);
+        book.setStatus(oldBook.get().getStatus());
         book.setId(id);
         bookRepository.save(book);
     }
@@ -56,7 +59,7 @@ public class LibraryImpl implements Library {
     }
 
     @Override
-    public void lendBook(long id) {
+    public void lendBookToUser(long id, String userId) {
         BookEntity book = bookRepository.findById(id)
                 .orElseThrow(() ->
                         new ResponseStatusException(HttpStatus.NOT_FOUND, "Книги с таким id не существует"));
@@ -64,6 +67,7 @@ public class LibraryImpl implements Library {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Данная книга уже выдана");
         }
         book.setStatus(BookStatus.ISSUED);
+        book.setUserId(userId);
         bookRepository.save(book);
     }
 

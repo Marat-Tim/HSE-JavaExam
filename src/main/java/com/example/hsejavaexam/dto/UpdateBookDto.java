@@ -10,6 +10,4 @@ public class UpdateBookDto {
     private String author;
 
     private String description;
-
-    private BookStatus status;
 }

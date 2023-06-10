@@ -23,4 +23,7 @@ public class BookEntity {
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private BookStatus status;
+
+    @Column(name = "user_id")
+    private String userId;
 }

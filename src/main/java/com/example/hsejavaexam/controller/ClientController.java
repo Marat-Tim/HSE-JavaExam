@@ -11,8 +11,8 @@ public class ClientController implements ClientApi {
     private final Library library;
 
     @Override
-    public void lend(long userId, long bookId) {
-        library.lendBook(bookId);
+    public void lend(String userId, long bookId) {
+        library.lendBookToUser(bookId, userId);
         // TODO что-то сделать с userId
     }
 

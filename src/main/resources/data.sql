@@ -4,5 +4,6 @@ CREATE TABLE IF NOT EXISTS books
     name        VARCHAR(50),
     author      VARCHAR(50),
     description TEXT,
-    status      VARCHAR(20) NOT NULL CHECK (status IN ('IN_STOCK', 'ISSUED'))
+    status      VARCHAR(20) NOT NULL CHECK (status IN ('IN_STOCK', 'ISSUED')),
+    user_id     TEXT
 );
